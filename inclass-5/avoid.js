@@ -22,7 +22,7 @@ window.onload = function() {
 	var magicKey = 16;
 
 	function randomDist() {
-		return Math.random() * 40 * ( Math.random() > 0.5 ? 1 : -1 )
+		return Math.random() * 70 * ( Math.random() > 0.5 ? 1 : -1 )
 	}
 
 	var computedStyle = window.getComputedStyle(btn)
@@ -30,8 +30,14 @@ window.onload = function() {
 	var btnHeight = computedStyle.height.replace('px','')
 
 	function moveButton() {
-		var x = event.clientX + randomDist() * 10
-		var y = event.clientY + randomDist() * 10
+		var x = event.clientX + randomDist()
+		var y = event.clientY + randomDist()
+    while (x < 0 || x > window.innerWidth - btnWidth*3) {
+			x = Math.random()*window.innerWidth
+		}
+		while (y < 0 || y > window.innerHeight - btnHeight*5) {
+			y = Math.random()*window.innerHeight
+		}
 		btn.style.left = x + 'px'
 		btn.style.top = y + 'px'
 	}
